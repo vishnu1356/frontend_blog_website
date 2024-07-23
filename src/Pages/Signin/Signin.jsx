@@ -90,12 +90,26 @@ const SignIn = () => {
                   </div>
                   <div>
                     <div class="flex items-center justify-between">
-                      <label for="" class="text-base font-medium text-gray-900">
+                      {/* <label for="" class="text-base font-medium text-gray-900">
                         {" "}
                         Password{" "}
-                      </label>
+                      </label> */}
 
                     </div>
+                    <div class="flex items-center justify-between">
+                  <label for="" class="text-base font-medium text-gray-900">
+                    {" "}
+                    Password{" "}
+                  </label>
+                  <Link
+                    to={"/forgot"}
+                    title=""
+                    class="text-sm font-semibold text-black hover:underline"
+                  >
+                    {" "}
+                    Forgot password?{" "}
+                  </Link>
+                        </div>
                     <div class="mt-2">
                       <input
                         onChange={handleLoginForm}
