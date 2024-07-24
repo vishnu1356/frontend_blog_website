@@ -1,34 +1,50 @@
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 
 const CreatePost = () => {
     const [formData, setFormData] = useState({
-        imgurl:"", title: "", description: ""
+     title: "", description: ""
     })
+    const [profileImage, setProfileImage] = useState(null);
     const navigator = useNavigate()
+
+    const handleImageChange = (e) => {
+        console.log("target files:", e.target.files)
+        setProfileImage(e.target.files[0]);
+    };
 
     function handleFormData (e) {
         const {name, value} = e.target;
         setFormData({...formData, [name]:value})
+
+
     }
 
     async function handleFormSubmit (e) {
         e.preventDefault();
+        const finalFormData = new FormData();
+        console.log("formData is", finalFormData);
+        finalFormData.append('title', formData.title);
+        finalFormData.append('description', formData.description);
+        finalFormData.append('blogimg', profileImage);
         try {
-            const response = await axios.post(`http://localhost:3131/api/v1/blog/post`, formData,                 {
+            const response = await axios.post(`http://localhost:3131/api/v1/blog/post`, finalFormData,                 {
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data'
                     // Authorization: 'Bearer your_token_here' // Add any other headers as needed
                 }
             })
             setFormData({
-                imgurl:"", title: "", description: ""
+                title: "", description: ""
             })
+            toast.success('Image uploaded successfully!');
             navigator("/")
         } catch (error) {
             console.log("error caught by handleForm Submit",error)
+            toast.error("Something Went Wrong!")
         }
 
 
@@ -47,17 +63,16 @@ const CreatePost = () => {
                                 <div>
                                     <label for="url" class="text-base font-medium text-gray-900">
                                         {" "}
-                                        Image URL{" "}
+                                        Upload Image{" "}
                                     </label>
                                     <div class="mt-2">                           
                                         <input
-                                            onChange={handleFormData}
-                                            value={formData.imgurl}
-                                            name="imgurl"
+                                            onChange={handleImageChange}
+                                            id="blogimg"
+                                            name="blogimg"
                                             class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none outline-four focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                            type="text"
+                                            type="file"
                                             placeholder="Enter Image URL Here..."
-                                            id="url"
                                         />
                                     </div>
                                 </div>
