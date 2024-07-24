@@ -41,7 +41,7 @@ const CreatePost = () => {
                 <div class="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
                     <div class="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
 
-                        <form onSubmit={handleFormSubmit} action="#" method="POST" class="mt-8">
+                        <form onSubmit={handleFormSubmit} action="/api/v1/upload" method="POST" enctype="multipart/form-data" class="mt-8">
                             <div class="space-y-5">
 
                                 <div>

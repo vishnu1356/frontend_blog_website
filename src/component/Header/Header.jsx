@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.css"
 import PostInputContext from "../../../contex/utils";
 import UserContext from "../../../contex/user";
+import toast from "react-hot-toast";
 
 
 const Header = () => {
@@ -12,6 +13,7 @@ const Header = () => {
 
     function handleLogout () {
         setUsername("")
+        toast.success("Log Out Successfully!")
     }
 
     return (

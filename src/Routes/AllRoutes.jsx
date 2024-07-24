@@ -6,6 +6,7 @@ import SignUp from "../Pages/Signup/SignUp";
 import CreatePost from "../Pages/CreatePost/CreatePost";
 import ForgotPassoword from "../Pages/ForgotPassoword/ForgotPassoword";
 import ResetPassword from "../Pages/ResetPassword/ResetPassword";
+import UploadImage from "../component/UploadImage/UploadImage";
 
 const AllRoutes = () => {
 
@@ -18,6 +19,7 @@ const AllRoutes = () => {
             <Route path="/createpost" element={<CreatePost />} />
             <Route path="/forgot" element={<ForgotPassoword />} />
             <Route path="/reset/:id" element={<ResetPassword />} />
+            <Route path="/upload" element={<UploadImage />} />
 
         </Routes>
     )
