@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const Post = (porps) => {
 
     const { title, imgurl, description, id, onDelete } = porps;
+    // console.log("imgurl is", imgurl)
+    console.log("baseUrl is", import.meta.env.VITE_BASE_URL+imgurl)
 
     const [isEdit, setIsEdit] = useState(false)
 
@@ -125,7 +127,7 @@ const Post = (porps) => {
                 ):
                 (  
                     <img
-                        src={imgurl}
+                        src={`${import.meta.env.VITE_BASE_URL}${id}`}
                         alt="Laptop"
                         class="h-[200px] w-full rounded-t-md object-cover"
                     />

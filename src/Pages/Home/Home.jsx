@@ -18,6 +18,8 @@ const Home = () => {
 
     }
 
+    console.log("all new data is:",data)
+
     function filterPostByInput () {
         const filteredPost = data.filter((item) => item.title.toLowerCase().includes(inputText.toLowerCase()))
         setFilterData([...filteredPost]);
@@ -56,7 +58,7 @@ const Home = () => {
                     filterData && filterData.map((item) => (
                         <Post title={item.title} 
                             onDelete={onDelteUpdate}
-                         id={item._id} key={item._id} imgurl={item.imgurl} description={item.description}/>
+                         id={item._id} key={item._id} imgurl={item.blogimg} description={item.description}/>
                     ))
                 }
             </div>
